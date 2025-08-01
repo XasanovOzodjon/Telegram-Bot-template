@@ -1,6 +1,6 @@
 import logging
 from telegram.error import (
-    Unauthorized, InvalidQueryID, TelegramError,
+    Unauthorized, TelegramError,
     BadRequest, RetryAfter
 )
 from telegram.ext import Dispatcher, CallbackContext
@@ -13,8 +13,8 @@ def error_handler(update: Update, context: CallbackContext):
         logging.exception(f'Unauthorized: {e}')
     except BadRequest as e:
         logging.exception(f'BadRequest: {e}')
-    except InvalidQueryID as e:
-        logging.exception(f'InvalidQueryID: {e} \nUpdate: {update}')
+    # except InvalidQueryID as e:
+    #     logging.exception(f'InvalidQueryID: {e} \nUpdate: {update}')
     except RetryAfter as e:
         logging.exception(f'RetryAfter: {e} \nUpdate: {update}')
     except TelegramError as e:
